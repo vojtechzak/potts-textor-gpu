@@ -76,13 +76,13 @@ ext = Extension('gpucpm',
                 # the implementation of this trick is in customize_compiler() below
                         #'-arch=sm_70', 
                 extra_compile_args={'gcc': [],
-                    'nvcc': ['-std=c++17',
+                    'nvcc': ['-std=c++14',
                     #'-ccbin=gcc-7', # this can help if cuda complains about a too new C compiler
-                    '--gpu-architecture=compute_70', '--gpu-code=sm_70',
+                    '--gpu-architecture=compute_70', '--gpu-code=compute_70',
                         '-rdc=true','-use_fast_math', '--compiler-options', "'-fPIC'", "--ptxas-options=-v", "-maxrregcount=40"],
                                     'nvcclink': [
                                         #'-L/usr/lib/x86_64-linux-gnu', # this can help when there are linker errors in the final step
-                                        '--gpu-architecture=compute_70', '--gpu-code=sm_70',
+                                        '--gpu-architecture=compute_70', '--gpu-code=compute_70',
                                         '--device-link', '--compiler-options', "'-fPIC'"]
                                     },
                 include_dirs = [numpy_include, CUDA['include'], 'src'])
