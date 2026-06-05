@@ -22,7 +22,6 @@ __device__ int scaleRandomToDelta(int seed) {
 __device__ unsigned int getNeighbor(unsigned int x, int& seed, int dimension) {
     seed = nextRandom(seed);
     int dx = scaleRandomToDelta(seed);
-    return (x + dx) & (dimension - 1);
-    //return (x + dx + dimension) % dimension;
+    return (x + dx + dimension) % dimension;
 
 }
