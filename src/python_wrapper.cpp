@@ -155,7 +155,7 @@ static PyObject * PyCpm_getCentroids(PyCpm* self, PyObject* args)
     if (dimensionality == 2) {
         auto centroids = (self->ptrObj)->get2dCentroids();
         npy_intp const dims[2] = {int(centroids.size()), 2};
-        PyArrayObject* output = (PyArrayObject*) PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
+        PyArrayObject* output = (PyArrayObject*) PyArray_SimpleNew(2, dims, NPY_DOUBLE);
         double* data = (double*) output->data;
         for(int i = 0; i < centroids.size(); i++) {
             data[i*2 + 0] = centroids[i].x;
@@ -165,7 +165,7 @@ static PyObject * PyCpm_getCentroids(PyCpm* self, PyObject* args)
     } else {
         auto centroids = (self->ptrObj)->get3dCentroids();
         npy_intp const dims[2] = {int(centroids.size()), 3};
-        PyArrayObject* output = (PyArrayObject*) PyArray_SimpleNew(2, dims, PyArray_DOUBLE);
+        PyArrayObject* output = (PyArrayObject*) PyArray_SimpleNew(2, dims, NPY_DOUBLE);
         double* data = (double*) output->data;
         for(int i = 0; i < centroids.size(); i++) {
             data[i*3 + 0] = centroids[i].x;
